@@ -136,6 +136,8 @@ Planned features include:
 - Advanced theming
 - Mobile app version
 
+Optimized for Desktop: This tool is designed for a professional world-building experience on large screens.
+
 ---
 
 **FlowBoard** - Where your story becomes a constellation.
