@@ -2499,3 +2499,125 @@ body:not(.branching-focused) #topbar {
   transform: translateX(100%);
 }
 
+/* Mobile Responsive Design */
+@media (max-width: 767px) {
+  /* Hide sidebar by default on mobile */
+  #sidebar {
+    width: 100vw !important;
+    transform: translateX(-100vw) !important;
+  }
+  
+  #sidebar.open {
+    transform: translateX(0) !important;
+  }
+  
+  /* Show hamburger menu label */
+  #sidebar-toggle-btn .label {
+    display: block;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  
+  /* Adjust topbar for mobile */
+  #topbar {
+    left: auto;
+    right: 16px;
+    left: 16px;
+    padding: 10px 12px;
+    min-height: 48px;
+  }
+  
+  /* Hide some topbar elements on mobile */
+  #topbar #brand,
+  #topbar #map-name,
+  #topbar #new-map-btn {
+    display: none;
+  }
+  
+  /* Adjust left toolbar for mobile */
+  #left-toolbar {
+    left: 8px;
+    top: 80px;
+  }
+  
+  .tool-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  /* Adjust canvas container for mobile */
+  #canvas-content {
+    padding: 20px 10px 80px 10px;
+  }
+  
+  /* Scale down nodes for mobile */
+  .node {
+    min-width: 120px !important;
+    min-height: 60px !important;
+    font-size: 12px !important;
+  }
+  
+  .node.sub-node {
+    min-width: 100px !important;
+    min-height: 50px !important;
+    font-size: 11px !important;
+    transform: scale(0.8);
+  }
+  
+  .node-text {
+    font-size: 11px !important;
+    padding: 6px !important;
+    min-height: 40px !important;
+  }
+  
+  /* Adjust properties sidebar for mobile */
+  #properties-sidebar {
+    width: 100vw !important;
+    right: -100vw !important;
+  }
+  
+  #properties-sidebar.open {
+    right: 0 !important;
+  }
+  
+  /* Adjust toast for mobile */
+  .toast-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .toast {
+    max-width: calc(100vw - 20px);
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  
+  /* Adjust context menu for mobile */
+  #context-menu {
+    font-size: 14px;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .tool-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .node {
+    min-width: 100px !important;
+    min-height: 50px !important;
+    transform: scale(0.7);
+  }
+  
+  .node-text {
+    font-size: 10px !important;
+    padding: 4px !important;
+  }
+}
+
