@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowBoard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Pre-Landing Screen (Premium Marketing Page) -->
+  <div id="pre-landing-screen">
+    <canvas id="pre-stars-canvas"></canvas>
+    <div id="pre-galaxy-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="pl-nav">
+      <div class="pl-logo">
+        <span class="pl-logo-mark">⬡</span>
+        <span class="pl-logo-text">FlowBoard</span>
+      </div>
+      <div class="pl-nav-actions">
+        <button class="pl-btn-ghost" id="pl-signin-btn" type="button">Sign In</button>
+        <button class="pl-btn-cyan" id="pl-create-btn" type="button">Create Account</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pl-hero">
+      <div class="pl-hero-eyebrow">— For writers. For thinkers. For world-builders. —</div>
+      <h1 class="pl-hero-headline">Your story<br><em>lives here.</em></h1>
+      <p class="pl-hero-sub">FlowBoard gives your narrative a universe to expand in. Map scenes, branch decisions, and watch your story become a constellation.</p>
+      <button class="pl-btn-launch" id="pl-launch-btn" type="button">
+        <span>Enter FlowBoard</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="pl-hero-hint">No account needed to explore</div>
+    </section>
+
+    <!-- Divider -->
+    <div class="pl-divider">
+      <div class="pl-divider-line"></div>
+      <span class="pl-divider-text">Two Modes. One Universe.</span>
+      <div class="pl-divider-line"></div>
+    </div>
+
+    <!-- Feature Cards -->
+    <section class="pl-features">
+      <!-- Flow Mode Card -->
+      <div class="pl-feature-card pl-card-flow">
+        <div class="pl-card-header">
+          <div class="pl-card-icon">↔</div>
+          <div class="pl-card-badge">Flow Mode</div>
+        </div>
+        <h3 class="pl-card-title">Structured Thinking,<br>Visualized.</h3>
+        <p class="pl-card-desc">Design process flows, connect scenes, and build logic-driven node diagrams. Perfect for linear narratives and precise story architecture.</p>
+        <div class="pl-card-preview pl-preview-flow">
+          <div class="pl-prev-node pl-prev-main">Act I</div>
+          <div class="pl-prev-line"></div>
+          <div class="pl-prev-node">Act II</div>
+          <div class="pl-prev-line"></div>
+          <div class="pl-prev-node">Act III</div>
+        </div>
+      </div>
+
+      <!-- Story Branching Card -->
+      <div class="pl-feature-card pl-card-branch">
+        <div class="pl-card-header">
+          <div class="pl-card-icon">✦</div>
+          <div class="pl-card-badge pl-badge-cyan">Story Branching</div>
+        </div>
+        <h3 class="pl-card-title">Every Choice,<br>A New Star.</h3>
+        <p class="pl-card-desc">Map branching narratives on a cosmic canvas. Watch your story expand into a constellation of decisions, paths, and possibilities.</p>
+        <div class="pl-card-preview pl-preview-branch">
+          <div class="pl-orb pl-orb-core"></div>
+          <div class="pl-orb-beam pl-beam-1"></div>
+          <div class="pl-orb pl-orb-sub pl-orb-1"></div>
+          <div class="pl-orb-beam pl-beam-2"></div>
+          <div class="pl-orb pl-orb-sub pl-orb-2"></div>
+          <div class="pl-orb-beam pl-beam-3"></div>
+          <div class="pl-orb pl-orb-sub pl-orb-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <div class="pl-bottom-cta">
+      <p>Ready to build your universe?</p>
+      <button class="pl-btn-launch pl-btn-launch-sm" id="pl-launch-btn-2" type="button">
+        <span>Start for Free</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="landing-screen">
+    <!-- Galaxy Background (shared with pre-landing-screen via fixed positioning) -->
+    
+    <div class="landing-card">
+      <div class="landing-header">
+        <p class="landing-subtitle">Welcome to</p>
+        <h1>FlowBoard</h1>
+        <p class="landing-description">Select the workspace that fits your next flow or branching story.</p>
+      </div>
+      <div class="landing-actions">
+        <button class="landing-mode-card" data-mode="flow" type="button">
+          <div class="mode-icon">↔</div>
+          <h2>Flow Mode</h2>
+          <p>Design process flows, connect actions and build node-driven diagrams.</p>
+        </button>
+        <button class="landing-mode-card" data-mode="branching" type="button">
+          <div class="mode-icon">🌿</div>
+          <h2>Story Branching</h2>
+          <p>Create narrative paths, decision branches and interactive story planning.</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-shell" class="shell-hidden">
+    <header id="topbar">
+      <div id="brand">FlowBoard</div>
+      <span id="maps-count">1</span>
+      <input id="map-name" type="text" value="Map 1" aria-label="Map name" />
+      <button id="new-map-btn" type="button">New Map</button>
+      <button id="save-map-btn" type="button">Save</button>
+      <span id="hint">Move tool: drag nodes, double-click text to edit.</span>
+    <div id="zoom-controls" aria-label="Zoom controls">
+      <button id="zoom-out-btn" type="button" title="Zoom Out" aria-label="Zoom Out">−</button>
+      <button id="zoom-in-btn" type="button" title="Zoom In" aria-label="Zoom In">+</button>
+    </div>
+    <button id="toggle-mode-btn" type="button" title="Toggle Edit/View Mode" aria-label="Toggle Edit/View Mode">
+      <span class="icon">◐</span>
+      <span class="label">Edit</span>
+    </button>
+    <button id="hide-tools-btn" type="button" title="Hide/Show Tools" aria-label="Hide/Show Tools">
+      <span class="icon">👁</span>
+    </button>
+    
+    <!-- View Mode Navigation Controls -->
+    <div id="view-nav-controls" class="hidden">
+      <button id="prev-step-btn" type="button" title="Previous Step" aria-label="Previous Step">◀</button>
+      <span id="step-indicator">1 / 1</span>
+      <button id="next-step-btn" type="button" title="Next Step" aria-label="Next Step">▶</button>
+    </div>
+    
+    <span id="zoom-level">100%</span>
+  </header>
+
+    <aside id="sidebar" class="sidebar" aria-label="Sidebar navigation">
+      <div class="sidebar-header">
+        Maps
+        <button id="sidebar-close-btn" class="sidebar-close-btn" type="button" aria-label="Close sidebar">×</button>
+      </div>
+      <div id="maps-list"></div>
+      <div class="sidebar-account">
+        <div class="account-label">User Account</div>
+        <button class="account-action" type="button"><span class="account-icon">👤</span>Profile</button>
+        <button class="account-action" type="button"><span class="account-icon">🌙</span>Theme</button>
+        <button class="account-action" type="button"><span class="account-icon">⚙️</span>Settings</button>
+      </div>
+    </aside>
+
+  <!-- Context Menu -->
+  <div id="context-menu" class="hidden">
+    <button id="edit-text-btn" type="button">Edit Text</button>
+    <button id="delete-node-btn" type="button">Delete Node</button>
+  </div>
+
+  <aside id="left-toolbar" aria-label="Tools">
+    <button id="sidebar-toggle-btn" class="tool-btn sidebar-toggle" type="button" title="Open sidebar" aria-label="Open sidebar">
+      <span class="icon">☰</span>
+      <span class="label">Menu</span>
+    </button>
+    <button class="tool-btn active" data-tool="move" type="button" title="Move tool">
+      <span class="icon">↔</span>
+      <span class="label">Move</span>
+    </button>
+    <button class="tool-btn" data-tool="add" type="button" title="Add node tool">
+      <span class="icon">＋</span>
+      <span class="label">Add Node</span>
+    </button>
+    <button class="tool-btn" data-tool="add-sub" type="button" title="Add sub-node tool">
+      <span class="icon">⊕</span>
+      <span class="label">Sub Node</span>
+    </button>
+    <button class="tool-btn" data-tool="connect" type="button" title="Connect nodes tool">
+      <span class="icon">⟷</span>
+      <span class="label">Connect</span>
+      <span class="corner-arrow">▾</span>
+    </button>
+    <button class="tool-btn danger" data-tool="delete" type="button" title="Delete node tool">
+      <span class="icon">&#10005;</span>
+      <span class="label">Delete</span>
+    </button>
+    <button class="tool-btn" data-tool="select" type="button" title="Select tool">
+      <span class="icon">&#9744;</span>
+      <span class="label">Select</span>
+    </button>
+    <div id="connect-menu" class="hidden">
+      <button class="connect-option active" data-connect-style="solid" type="button" title="Solid Line" aria-label="Solid Line">
+        <span class="connect-icon">━</span>
+      </button>
+      <button class="connect-option" data-connect-style="dashed" type="button" title="Dashed Line" aria-label="Dashed Line">
+        <span class="connect-icon">┄</span>
+      </button>
+      <button class="connect-option" data-connect-style="junction" type="button" title="Junction Dot" aria-label="Junction Dot">
+        <span class="connect-icon">●</span>
+      </button>
+    </div>
+
+    <div class="toolbar-separator"></div>
+    <div id="history-controls" aria-label="History controls">
+      <button id="undo-btn" class="history-btn" type="button" title="Undo" aria-label="Undo">
+        <span class="icon">↶</span>
+      </button>
+      <button id="redo-btn" class="history-btn" type="button" title="Redo" aria-label="Redo">
+        <span class="icon">↷</span>
+      </button>
+    </div>
+  </aside>
+
+  <div id="board">
+    <div id="canvas-content">
+      <svg id="edges-layer">
+        <defs>
+          <linearGradient id="edgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4fc3f7"></stop>
+            <stop offset="100%" stop-color="#26c6da"></stop>
+          </linearGradient>
+        </defs>
+        <g id="edges-group"></g>
+      </svg>
+      <div id="nodes-layer"></div>
+    </div>
+  </div>
+
+  <!-- Node Properties Sidebar -->
+  <aside id="properties-sidebar">
+    <div class="properties-header">
+      <h2>Node Properties</h2>
+      <button id="properties-close-btn" type="button" aria-label="Close properties">&times;</button>
+    </div>
+    <div class="properties-content">
+      <div class="form-group">
+        <label for="node-title-input">Title</label>
+        <input type="text" id="node-title-input" placeholder="Node Title" maxlength="60">
+        <div class="char-counter" id="title-char-counter">0/60</div>
+      </div>
+      <div class="form-group">
+        <label for="node-order-input">Node Order</label>
+        <input type="number" id="node-order-input" min="1" placeholder="#" />
+      </div>
+      <div class="form-group">
+        <label for="node-desc-input">Description / Notes</label>
+        <textarea id="node-desc-input" placeholder="Add story notes or details here..." maxlength="500"></textarea>
+        <div class="char-counter" id="desc-char-counter">0/500</div>
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <input type="file" id="node-image-input" accept="image/*" style="display:none" />
+        <div class="media-upload-area" id="media-upload-area">
+          <div class="media-placeholder" id="media-placeholder">
+            <span class="media-ph-icon">🖼</span>
+            <span class="media-ph-text">Click to add image</span>
+          </div>
+          <img id="media-preview" class="hidden" alt="Node image" />
+        </div>
+        <button id="media-remove-btn" class="media-remove-btn hidden" type="button">✕ Remove image</button>
+        <div id="media-scale-row" class="hidden">
+          <label for="image-scale-input">Profile Zoom</label>
+          <input type="range" id="image-scale-input" min="0.5" max="3" step="0.05" value="1" />
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+  <!-- Branching Mode Focus Card -->
+  <div id="branching-focus-overlay" class="branching-focus-hidden">
+    <div id="branching-focus-card">
+      <button id="branching-focus-close" aria-label="Close">×</button>
+      <div id="branching-focus-tag">NODE</div>
+      <div id="branching-focus-title">The Title</div>
+      <div id="branching-focus-body">The Description</div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Pre-Landing Inline Script -->
+  <script>
+  (function () {
+    // Draw star field on pre-landing canvas
+    function drawPreStars() {
+      var canvas = document.getElementById('pre-stars-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var width = canvas.width = window.innerWidth;
+      var height = canvas.height = window.innerHeight;
+      var count = Math.floor((width * height) / 2200);
+      ctx.clearRect(0, 0, width, height);
+      for (var i = 0; i < count; i++) {
+        var x = Math.random() * width;
+        var y = Math.random() * height;
+        var r = Math.random() * 1.1;
+        var alpha = 0.15 + Math.random() * 0.6;
+        var hue = Math.random() < 0.15 ? 185 : 220;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + hue + ', 60%, 88%, ' + alpha + ')';
+        ctx.fill();
+      }
+    }
+    drawPreStars();
+    window.addEventListener('resize', drawPreStars);
+
+    // Hide pre-landing and reveal mode-selection landing screen
+    function hidePrelanding() {
+      var screen = document.getElementById('pre-landing-screen');
+      if (!screen) return;
+      screen.classList.add('pl-fade-out');
+      setTimeout(function () {
+        screen.classList.add('pl-hidden');
+        screen.classList.remove('pl-fade-out');
+        var landing = document.getElementById('landing-screen');
+        if (landing) landing.style.display = 'flex';
+      }, 500);
+    }
+
+    // Wire all CTA buttons
+    ['pl-launch-btn', 'pl-launch-btn-2', 'pl-signin-btn', 'pl-create-btn'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener('click', hidePrelanding);
+    });
+  })();
+  </script>
+
+  <script src="script.js"></script>
+  <script src="branching-mode.js"></script>
+</body>
+</html>
